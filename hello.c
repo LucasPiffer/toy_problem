@@ -23,7 +23,7 @@ void push(node_t * head, char * line) {
 void print_list(node_t * head) {
     node_t * current = head;
 
-    printf("%s", current->data);
+    printf("\n\n%s\n\n", current->data);
     
     if(current->next != NULL) {
         print_list(current->next);
