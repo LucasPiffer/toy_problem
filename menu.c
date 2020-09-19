@@ -23,18 +23,18 @@ struct LogsRede* liberar_lista(struct LogsRede* cabeca);
 void imprimir(struct LogsRede *aux);
 
 
-void push(node_t * head, char * line) {
-    node_t * current = head;
+// void push(node_t * head, char * line) {
+//     node_t * current = head;
 
-    while(current->next != NULL) {
-        current = current->next;
-    }
+//     while(current->next != NULL) {
+//         current = current->next;
+//     }
 
-    node_t * new_node = (node_t *) malloc(sizeof(node_t));
-    new_node->data = line;
-    current->next = new_node;
-    new_node->next = NULL;
-}
+//     node_t * new_node = (node_t *) malloc(sizeof(node_t));
+//     new_node->data = line;
+//     current->next = new_node;
+//     new_node->next = NULL;
+// }
 
 void setup(struct LogsRed *cabeca) {
     // int index;
@@ -71,13 +71,8 @@ void setup(struct LogsRed *cabeca) {
     // exit(EXIT_SUCCESS);
 }
 
-int main(){
-    struct LogsRede *cabeca = (struct LogsRede *)malloc(sizeof(struct LogsRede));
-    char descricao[TAM];
-    
+int askUser() {
     int op;
-
-    setup(cabeca);
 
     printf(" \n Escolha uma das opções abaixo: ");
     printf(" \n 1. Visualizar todos os eventos de rede ");
@@ -89,6 +84,17 @@ int main(){
 
     printf(" \n Digite o número da opção desejada: ");
     scanf("%d", &op);
+
+    return op;
+}
+
+int main(){
+    struct LogsRede *cabeca = (struct LogsRede *)malloc(sizeof(struct LogsRede));
+    char descricao[TAM];
+    
+    setup(cabeca);
+
+    int op = askUser();
 
     switch (op)
     {
