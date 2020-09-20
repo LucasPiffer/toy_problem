@@ -6,7 +6,7 @@
 
 struct LogsRede {
     char * linha;
-    
+    int number;
     struct LogsRede *proximo;
 };
 
@@ -22,14 +22,17 @@ void imprimir(struct LogsRede *aux);
 
  void push(struct LogsRede* cabeca, char * linha) {
      struct LogsRede* current = cabeca;
+     int i = cabeca->number + 1;
 
      while(current->proximo != NULL) {
         current = current->proximo;
+        i++;
     }
 
     struct LogsRede * novo_logsRede = (struct LogsRede *) malloc(sizeof(struct LogsRede));
     
     novo_logsRede->linha = linha;
+    novo_logsRede->number = i;
     current->proximo = novo_logsRede;
     novo_logsRede->proximo = NULL;
 }
@@ -54,6 +57,7 @@ void setup(struct LogsRede *cabeca) {
         if(strstr(str, "network")) {
             if(cabeca->linha == NULL) {
                 cabeca->linha = strdup(str);
+                cabeca->number = 1;
                 cabeca->proximo = NULL;
             } else {
                 push(cabeca, strdup(str));
